@@ -22,20 +22,20 @@ export default function TicketCounter({
           </h4>
         </header>
         <div className="mx-auto px-4 py-2 flex justify-between items-center my-4 w-[60%] bg-white rounded-md">
+        <button
+            className="decrement-btn"
+            onClick={onDecrement}
+            type="button"
+          >
+            <CiCircleMinus size={30} />
+          </button>
+          <span className="guest-counter">{count}</span>
           <button
             className="increment-btn"
             onClick={onIncrement}
             type="button"
           >
             <CiCirclePlus size={30} />
-          </button>
-          <span className="guest-counter">{count}</span>
-          <button
-            className="decrement-btn"
-            onClick={onDecrement}
-            type="button"
-          >
-            <CiCircleMinus size={30} />
           </button>
         </div>
       </article>
