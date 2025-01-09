@@ -2,22 +2,28 @@
 import { useState, useEffect } from "react";
 import BandsListe from "@/app/components/BandsListe";
 
-export default function GenreFilter() {
+export default function GenreFilter()
+{
   const [bands, setBands] = useState([]);
   const [filteredBands, setFilteredBands] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("Alle");
 
-  useEffect(() => {
+
+  
+  useEffect(() =>
+  {
     fetch("https://polarized-chrome-trouser.glitch.me/bands")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) =>
+      {
         setBands(data || []);
         setFilteredBands(data || []);
       })
       .catch((err) => console.error("Error fetching bands:", err));
   }, []);
 
-  const handleFilterChange = (genre) => {
+  const handleFilterChange = (genre) =>
+  {
     setSelectedGenre(genre);
     const filtered =
       genre === "All" ? bands : bands.filter((band) => band.genre === genre);
@@ -30,19 +36,22 @@ export default function GenreFilter() {
     <div className="container mx-auto px-4  bg-white  custom-border p-7 ">
       {selectedGenre === "All"}
 
-      <div className="pb-3.5  ">
-        <label className="pb-3.5 text-heading-four">Select genre:</label>
-        <select
-          className="vip-ticket-counter-background-color rounded-[20px]"
-          value={selectedGenre}
-          onChange={(e) => handleFilterChange(e.target.value)}
-        >
-          {genres.map((genre) => (
-            <option key={genre} value={genre}>
-              {genre}
-            </option>
-          ))}
-        </select>
+      <div className="flex justify-between items-center mb-8">
+        
+        <div className="pb-3.5  ">
+          <label className="pb-3.5 text-heading-four">Select genre:</label>
+          <select
+            className="vip-ticket-counter-background-color rounded-[20px]"
+            value={selectedGenre}
+            onChange={(e) => handleFilterChange(e.target.value)}
+          >
+            {genres.map((genre) => (
+              <option key={genre} value={genre}>
+                {genre}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {filteredBands.length > 0 ? (
