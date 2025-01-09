@@ -98,8 +98,7 @@ export default function BandsList({ bands })
                 mapDayToName={mapDayToName}
               />
             ))
-        }
-      </div>
+        }      </div>
     </div>
   );
 }

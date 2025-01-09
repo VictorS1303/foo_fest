@@ -1,6 +1,7 @@
 'use client';
 import { CiCirclePlus, CiCircleMinus } from 'react-icons/ci';
 import Fieldset from '@/app/components/Fieldset.jsx'
+import BookingOptionPopover from './BookingOptionPopover.jsx'
 
 export default function TicketCounter({
   ticketType,
