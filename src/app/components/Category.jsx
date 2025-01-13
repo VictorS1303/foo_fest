@@ -57,7 +57,7 @@ export default function GenreFilter()
       <div className="flex justify-between items-center mb-8">
         <div className="pb-3.5 flex items-center align-center justify-between w-full max-md:flex-col max-md:gap-8">
           {/* Artist Filter */}
-          <ArtistFilter onFilterChange={handleArtistFilterChange} />
+          <ArtistFilter onFilterChange={handleFilterChange} />
 
           {/* Genre Filter */}
           <div className="-order-1 whitespace-nowrap">
