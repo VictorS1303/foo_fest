@@ -1,14 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import BandCard from "@/app/components/BandCard";
-import ArtistFilter from "./ArtistFilter"
+import ArtistFilter from "./ArtistFilter";
 
 export default function BandsList({ bands })
 {
   const [schedule, setSchedule] = useState({});
   const [hoveredBand, setHoveredBand] = useState(null);
-  const [filterArtists, setFilterArtists] = useState('')
-  
+  const [filterArtists, setFilterArtists] = useState("");
 
   useEffect(() =>
   {
@@ -26,14 +25,14 @@ export default function BandsList({ bands })
     {
       for (const day in schedule[scene])
       {
-        const events = schedule[scene][day].filter((event) => event.act.includes(bandName));
+        const events = schedule[scene][day].filter((event) =>
+          event.act.includes(bandName)
+        );
 
         if (events.length > 0)
         {
           events.forEach((event) =>
           {
-            // console.log("Event found:", event);
-
             bandSchedule.push({
               scene,
               day,
@@ -48,6 +47,7 @@ export default function BandsList({ bands })
 
     return bandSchedule;
   };
+
   const mapDayToName = (day) =>
   {
     switch (day)
@@ -73,20 +73,15 @@ export default function BandsList({ bands })
 
   return (
     <div className="container mx-auto">
-      <input
-        type="text"
-        className="border-b-2 border-orange-300 mb-4 focus:ring-0 focus:outline-none"
-        placeholder="Search for artists"
-        onChange={(e) => setFilterArtists(e.target.value)}
-      />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
         {bands &&
           bands.length > 0 &&
-          bands.filter((band) =>
-            filterArtists.toLowerCase() === ''
-              ? true
-              : band.name.toLowerCase().includes(filterArtists.toLowerCase())
-          )
+          bands
+            .filter((band) =>
+              filterArtists.toLowerCase() === ""
+                ? true
+                : band.name.toLowerCase().includes(filterArtists.toLowerCase())
+            )
             .map((band) => (
               <BandCard
                 key={band.slug}
@@ -97,8 +92,8 @@ export default function BandsList({ bands })
                 getScheduleForBand={getScheduleForBand}
                 mapDayToName={mapDayToName}
               />
-            ))
-        }      </div>
+            ))}
+      </div>
     </div>
   );
 }
